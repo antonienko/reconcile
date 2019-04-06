@@ -8,9 +8,8 @@ package reconcile
 import (
 	"bytes"
 	"errors"
+	"github.com/antonienko/reconcile/html"
 	"io"
-
-	"golang.org/x/net/html"
 )
 
 // Declare considered empty HTML tags
