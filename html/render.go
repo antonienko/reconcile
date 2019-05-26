@@ -7,7 +7,6 @@ package html
 import (
 	"bufio"
 	"errors"
-	"fmt"
 	"io"
 	"strings"
 )
@@ -172,7 +171,7 @@ func render1(w writer, n *Node) error {
 	}
 	if voidElements[n.Data] {
 		if n.FirstChild != nil {
-			return fmt.Errorf("html: void element <%s> has child nodes", n.Data)
+			return errors.New("html: void element <" + n.Data + "> has child nodes")
 		}
 		_, err := w.WriteString("/>")
 		return err

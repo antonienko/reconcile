@@ -6,7 +6,6 @@ package html
 
 import (
 	"errors"
-	"fmt"
 	"io"
 	"strings"
 
@@ -2043,7 +2042,7 @@ func ParseFragment(r io.Reader, context *Node) ([]*Node, error) {
 		// it is valid to pass an element whose tag isn't a known atom. For example,
 		// DataAtom == 0 and Data = "tagfromthefuture" is perfectly consistent.
 		if context.DataAtom != a.Lookup([]byte(context.Data)) {
-			return nil, fmt.Errorf("html: inconsistent Node: DataAtom=%q, Data=%q", context.DataAtom, context.Data)
+			return nil, errors.New("html: inconsistent Node: DataAtom='" + context.DataAtom.String() + "', Data='" + context.Data + "'")
 		}
 		contextTag = context.DataAtom.String()
 	}
